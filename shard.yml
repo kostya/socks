@@ -1,0 +1,9 @@
+name: socks
+version: 0.1.0
+
+authors:
+  - Konstantin Makarchev <kostya27@gmail.com>
+
+crystal: 0.24.2
+
+license: MIT

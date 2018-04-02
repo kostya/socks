@@ -27,7 +27,7 @@ class Socks::Server
     end
 
     begin
-      client.write_byte(VERSION)
+      client.write_byte(Socks::VERSION)
       client.write_byte(0_u8)
     rescue ex
       raise Socks::Error.new("Failed to write auth reply `#{ex.inspect}`")

@@ -143,7 +143,7 @@ class Socks::Request
 
     send_reply(ResponseCode::SUCCESS)
 
-    ch = Channel::Buffered(Nil).new(2)
+    ch = Channel(Nil).new(2)
     spawn copy_io(sock, @client, ch)
     spawn copy_io(@client, sock, ch)
 

@@ -131,10 +131,10 @@ class Socks::Request
 
     sock = begin
       TCPSocket.new(addr, @port, dns_timeout: 10.seconds, connect_timeout: 10.seconds)
-    rescue IO::Timeout
+    rescue IO::TimeoutError
       send_reply(ResponseCode::TTL_EXPIRED)
       raise Socks::Error.new("IO timeout to connect to host")
-    rescue Errno
+    rescue Socket::Error
       send_reply(ResponseCode::CONNECTION_REFUSED)
       raise Socks::Error.new("Connection refused")
     end
@@ -156,9 +156,9 @@ class Socks::Request
 
   private def copy_io(src, dst, ch)
     IO.copy(src, dst)
-  rescue Errno
+  rescue IO::Error
   rescue Socket::Error
-  rescue IO::Timeout
+  rescue IO::TimeoutError
   ensure
     src.close
     dst.close

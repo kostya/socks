@@ -30,7 +30,8 @@ cbk = ->(context : HTTP::Server::Context) do
 end
 
 spawn do
-  server = HTTP::Server.new(host, port, &cbk)
+  server = HTTP::Server.new(&cbk)
+  server.bind_tcp(host, port)
   puts "BenchServer Listening on http://#{host}:#{port}"
   server.listen
 end

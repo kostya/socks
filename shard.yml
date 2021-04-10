@@ -1,9 +1,9 @@
 name: socks
-version: 0.3
+version: 0.4
 
 authors:
   - Konstantin Makarchev <kostya27@gmail.com>
 
-crystal: 0.24.2
+crystal: ">= 0.24.2"
 
 license: MIT
